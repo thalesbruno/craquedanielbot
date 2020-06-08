@@ -1,3 +1,4 @@
+objs.txt
 venv/
 __pycache__
 *.json
