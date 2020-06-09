@@ -3,3 +3,5 @@ venv/
 __pycache__
 *.json
 quotes.db*
+bot.log
+bot.pid
