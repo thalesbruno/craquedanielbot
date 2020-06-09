@@ -17,7 +17,7 @@ def create_connection(db_file):
 
 
 def select_quote():
-    conn = create_connection("quotes.db")
+    conn = create_connection('bot/quotes.db')
     cur = conn.cursor()
     cur.execute("SELECT MIN(id), MAX(id) FROM quotes;")
     min_id, max_id = cur.fetchone()

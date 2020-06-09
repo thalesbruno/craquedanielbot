@@ -23,7 +23,7 @@ def populate_db(db_file, quotes_file):
 
 
 def main():
-    populate_db('quotes.db', 'quotes_file.txt')
+    populate_db('bot/quotes.db', 'bot/quotes_file.txt')
 
 
 if __name__ == '__main__':

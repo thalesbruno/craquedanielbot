@@ -34,7 +34,7 @@ def create_table(conn):
 
 
 def main():
-    conn = create_db('quotes.db')
+    conn = create_db('bot/quotes.db')
     create_table(conn)
 
 

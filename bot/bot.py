@@ -9,6 +9,7 @@ from db import select_quote
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
+
 def check_mentions(api, since_id):
     logger.info("Retrieving mentions")
     new_since_id = since_id
@@ -18,11 +19,13 @@ def check_mentions(api, since_id):
             continue
         logger.info(f"Answering to {tweet.user.name}")
         quote = select_quote()
-        api.update_status(status=f"@{tweet.user.screen_name} {quote}", in_reply_to_status_id=tweet.id)
+        api.update_status(
+            status=f"@{tweet.user.screen_name} {quote}", in_reply_to_status_id=tweet.id)
     return new_since_id
 
+
 def main():
-    with open('last_since_id.json', 'r') as f:
+    with open('bot/last_since_id.json', 'r') as f:
         last_since_id = json.load(f)
     api = create_api()
     since_id = int(last_since_id['last_since_id'])
@@ -32,6 +35,7 @@ def main():
         with open('last_since_id.json', 'w') as f:
             json.dump({'last_since_id': str(since_id)}, f)
         time.sleep(60)
+
 
 if __name__ == "__main__":
     main()
