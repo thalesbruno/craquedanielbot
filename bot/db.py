@@ -6,13 +6,15 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
+
 def create_connection(db_file):
     conn = None
     try:
         conn = sqlite3.connect(db_file)
     except Error as e:
-        logger.info(e)
+        logger.error(e)
     return conn
+
 
 def select_quote():
     conn = create_connection("quotes.db")
