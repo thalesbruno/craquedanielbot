@@ -5,3 +5,4 @@ __pycache__
 quotes.db*
 bot.log
 bot.pid
+db_tests.py

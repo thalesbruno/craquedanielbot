@@ -11,12 +11,16 @@ logger = logging.getLogger()
 
 
 def check_mentions(api, since_id):
+    """
+    This function gets an api object and a twitter id and search for new mentions
+    since that last (already replied) and so replies all
+    """
     logger.info("Retrieving mentions")
     new_since_id = since_id
     for tweet in tweepy.Cursor(api.mentions_timeline, since_id=since_id).items():
         new_since_id = max(tweet.id, new_since_id)
-        if tweet.in_reply_to_status_id is not None:
-            continue
+        # if tweet.in_reply_to_status_id is not None:
+        #     continue
         logger.info(f"Answering to {tweet.user.name}")
         quote = select_quote()
         api.update_status(
